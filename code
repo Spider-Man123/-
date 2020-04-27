@@ -1,0 +1,438 @@
+import base64
+import tkinter.filedialog
+import tkinter as tk
+import requests
+from PIL import Image, ImageTk
+from turtle import *
+from aip import AipOcr
+from tkinter.filedialog import askopenfilename
+def aboutmm():
+    def fanhui():
+        windows.deiconify()
+        root.destroy()
+    windows.withdraw()
+    root = tk.Tk()
+    root.title("关于spider-man")
+    root.geometry('100x100')
+    fanhui = tk.Button(root, text="返回", command=fanhui, bg='green', height=3, width=5, font=('Calibri', 15))
+    fanhui.pack()
+    speed(20)
+    bgcolor("#990000")
+    pensize(10)
+    penup()
+    goto(0, 50)
+    pendown()
+    circle(-120)
+    penup()
+    circle(-120, -60)
+    pendown()
+    pensize(5)
+    right(50)
+    circle(70, 55)
+    right(85)
+    circle(75, 58)
+    right(90)
+    circle(70, 55)
+    right(90)
+    circle(70, 58)
+
+    # 身子
+    penup()
+    pensize(10)
+    goto(80, 15)
+    pendown()
+    seth(92)
+    fd(135)
+    seth(125)
+    circle(30, 135)
+    seth(190)
+    fd(50)
+    seth(125)
+    circle(30, 135)
+    seth(275)
+    fd(90)
+
+    # 胳膊1
+    penup()
+    pensize(10)
+    goto(92, -150)
+    seth(240)
+    pendown()
+    fd(80)
+    left(10)
+    circle(-28, 185)
+
+    # 胳膊2
+    penup()
+    goto(0, 50)
+    seth(0)
+    pensize(10)
+    circle(-120, -60)
+    seth(200)
+    pendown()
+    fd(72)
+    left(20)
+    circle(30, 150)
+    left(20)
+    fd(20)
+    right(15)
+    fd(10)
+    pensize(5)
+    fillcolor("#3366cc")
+    begin_fill()
+    seth(92)
+    circle(-120, 31)
+    seth(200)
+    fd(45)
+    left(90)
+    fd(52)
+    end_fill()
+    fd(-12)
+    right(90)
+    fd(40)
+    penup()
+    right(90)
+    fd(18)
+    pendown()
+    right(86)
+    fd(40)
+    penup()
+    goto(-152, -86)
+    pendown()
+    left(40)
+    circle(35, 90)
+
+    # 身体着色
+    penup()
+    goto(-80, 116)
+    seth(10)
+    pensize(5)
+    pendown()
+    begin_fill()
+    fillcolor("#3366cc")
+    fd(155)
+    seth(-88)
+    fd(37)
+    seth(195)
+    fd(156)
+    end_fill()
+
+    penup()
+    goto(-75, 38)
+    seth(15)
+    pendown()
+    begin_fill()
+    fd(158)
+    seth(-88)
+    fd(55)
+    seth(140)
+    circle(120, 78)
+    end_fill()
+
+    # 胳膊1着色
+    penup()
+    fillcolor("#3366cc")
+    pensize(5)
+    goto(75, -170)
+    pendown()
+    begin_fill()
+    seth(240)
+    fd(30)
+    right(90)
+    fd(17)
+    end_fill()
+    fd(10)
+    left(80)
+    fd(55)
+    penup()
+    left(90)
+    fd(15)
+    pendown()
+    left(85)
+    fd(55)
+    penup()
+    goto(43, -225)
+    left(84)
+    pendown()
+    circle(60, 51)
+
+    speed(0)
+    # 身体竖纹
+    for i in range(3):
+        penup()
+        goto(-70 + i * 15, 135)
+        seth(-90)
+        pendown()
+        pensize(5)
+        fd(15 - 2 * i)
+    for i in range(3):
+        penup()
+        goto(36 + i * 15, 156)
+        seth(-90)
+        pendown()
+        pensize(5)
+        fd(15 - 2 * i)
+
+        a = -60
+        b = 70
+    for i in range(4):
+        penup()
+        goto(a, b)
+        a = a + 40
+        b = b + 10
+        seth(-90)
+        pendown()
+        pensize(5)
+        fd(26)
+
+    def oo(li, jing):
+        penup()
+        goto(0, 50)
+        seth(0)
+        circle(-120, li)
+        pendown()
+        right(jing)
+
+    pensize(5)
+    oo(-60, 110)
+    fd(130)
+    oo(-28, 96)
+    fd(140)
+    oo(9, 89)
+    fd(144)
+    oo(42, 70)
+    fd(160)
+    oo(80, 60)
+    fd(130)
+
+    penup()
+    goto(-80, -40)
+    right(160)
+    pendown()
+    right(50)
+    circle(70, 45)
+    right(75)
+    circle(70, 38)
+    right(50)
+    circle(70, 45)
+    right(90)
+    circle(70, 48)
+
+    penup()
+    goto(-53, -70)
+    pendown()
+    left(40)
+    circle(70, 30)
+    right(50)
+    circle(70, 20)
+    right(50)
+    circle(70, 38)
+    right(70)
+    circle(70, 24)
+
+    penup()
+    goto(-19, -105)
+    left(72)
+    pendown()
+    fd(22)
+    right(60)
+    fd(22)
+
+    oo(-140, 80)
+    circle(-90, 120)
+
+    penup()
+    oo(140, 100)
+    circle(90, 13)
+    pendown()
+    right(-50)
+    circle(70, 45)
+    right(75)
+    circle(70, 38)
+    right(50)
+    circle(70, 36)
+
+    penup()
+    goto(22, -185)
+    right(70)
+    pendown()
+    fd(72)
+
+    penup()
+    goto(-40, -182)
+    right(38)
+    pendown()
+    fd(70)
+
+    speed(10)
+
+    # 左眼
+    penup()
+    pensize(7)
+    goto(-15, -110)
+    seth(0)
+    pendown()
+    pensize(10)
+    begin_fill()
+    left(130)
+    fd(110)
+    right(250)
+    circle(90, 60)
+    circle(40, 120)
+    fillcolor("#F5FFFA")
+    end_fill()
+    # 右眼
+    penup()
+    goto(5, -110)
+    pendown()
+    begin_fill()
+    right(30)
+    fd(110)
+    right(-250)
+    circle(-90, 60)
+    circle(-40, 120)
+    end_fill()
+    done()
+    root.mainloop()
+def renlian():
+    def get_access_token(client_id, client_secret):
+        host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=' + client_id + '&client_secret=' + client_secret
+        header = {'Content-Type': 'application/json; charset=UTF-8'}
+        response1 = requests.post(url=host, headers=header)
+        json1 = response1.json()
+        access_token = json1['access_token']
+        return access_token
+    def open_pic2base64():
+        root = tkinter.Tk()
+        root.withdraw()
+        file_path = tkinter.filedialog.askopenfilename(title=u'人脸识别.jpg')
+        f = open(file_path, 'rb')
+        img = base64.b64encode(f.read()).decode('utf-8')
+        return img
+    def bd_rec_face(client_id, client_secret):
+        request_url = "https://aip.baidubce.com/rest/2.0/face/v3/detect"
+        params = {"image": open_pic2base64(), "image_type": "BASE64",
+                  "face_field": "age,beauty,glasses,gender,race"}
+        header = {'Content-Type': 'application/json'}
+
+        access_token = get_access_token(client_id, client_secret)
+        request_url = request_url + "?access_token=" + access_token
+
+        request_url = request_url + "?access_token=" + access_token
+        response1 = requests.post(url=request_url, data=params, headers=header)
+        json1 = response1.json()
+        list1=[]
+        if json1["result"]["face_list"][0]['gender']['type']=="female":
+            json1["result"]["face_list"][0]['gender']['type']="女"
+        else:
+            json1["result"]["face_list"][0]['gender']['type']="男"
+        if json1["result"]["face_list"][0]['glasses']['type']=='none':
+            json1["result"]["face_list"][0]['glasses']['type']='NO'
+        else:
+            json1["result"]["face_list"][0]['glasses']['type']='YES'
+        list1.append(str(json1["result"]["face_list"][0]['gender']['type']))
+        list1.append(str(json1["result"]["face_list"][0]['age'])+"岁")
+        list1.append(str(json1["result"]["face_list"][0]['race']['type']))
+        list1.append(str(json1["result"]["face_list"][0]['beauty'])+"分/100分")
+        list1.append(json1["result"]["face_list"][0]['glasses']['type'])
+        return list1
+    if __name__ == '__main__':
+        def fanhui():
+            windows.deiconify()
+            window.destroy()
+        windows.withdraw()
+        client_id = 'kS4QUnuZsGzlDURyfGVSUr0W'
+        client_secret = 'KidI8AxcW0uMXkOz42VdNjRbklEqvMhT'
+        list2=bd_rec_face(client_id, client_secret)
+        window=tkinter .Toplevel()
+        window.title("人脸识别信息")
+        window.geometry('800x800')
+        l = tk.Label( window,text="\n\n\n\n性别为 "+list2[0], font=('Calibri', 25), justify=tk.LEFT)
+        l.pack()
+        l2 = tk.Label( window,text="年龄为 "+list2[1], font=('Calibri', 25),justify=tk.LEFT)
+        l2.pack()
+        l3 = tk.Label(window, text="人种为 "+list2[2], font=('Calibri', 25), justify=tk.LEFT)
+        l3.pack()
+        l4 = tk.Label( window,text="颜值 "+list2[3], font=('Calibri', 25),justify=tk.LEFT)
+        l4.pack()
+        l5 = tk.Label(window, text="是否带眼镜 "+list2[4], font=('Calibri', 25),justify=tk.LEFT)
+        l5.pack()
+        menubar = tk.Menu(window)
+        filemenu = tk.Menu(menubar, tearoff=0)
+        menubar.add_cascade(label='菜单', menu=filemenu)
+        filemenu.add_command(label='返回', command=fanhui)
+        window.config(menu=menubar)
+        window.mainloop()
+def wenzi():
+    def fanhui():
+        windows.deiconify()
+        roots.destroy()
+    windows.withdraw()
+    APP_ID = '17523192'
+    API_KEY = 'OMUSKjImz3MD7GeaE2HPC0ic'
+    SECRET_KEY = 'Zf7uRhqUWP2GlQZS1KHPsaGwOyHDRpUw'
+    client = AipOcr(APP_ID, API_KEY, SECRET_KEY)
+    def get_file_content(filePath):
+        with open(filePath, 'rb') as fp:
+            return fp.read()
+ #   file_path = tkinter.filedialog.askopenfilename(title=u'图文转换.jpg')
+    file_path = askopenfilename(title='图文转换.jpg', initialdir='C:\\Windows')
+
+    image = get_file_content(file_path)
+    ret = client.basicGeneral(image)
+    list2=[]
+    for i in ret['words_result']:
+        list2.append(i['words']+'\n')
+    roots=tkinter.Tk()
+    t2= tk.Text(roots,bg='white', height=40, font=('黑体', 25))
+    t2.pack()
+    menubar = tk.Menu(roots)
+    filemenu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label='菜单', menu=filemenu)
+    filemenu.add_command(label='返回', command=fanhui)
+    with open('wenzi.txt','w',encoding='utf-8')as fp:
+        fp.write("".join(list2))
+    with open('wenzi.txt', encoding='utf-8') as f:
+        for each_line in f:
+            t2.insert(tk.INSERT, each_line)
+    roots.config(menu=menubar)
+    roots.mainloop()
+def aboutme():
+    def fanhui():
+        windows.deiconify()
+        root.destroy()
+    windows.withdraw()
+    root=tk.Tk()
+    root.title("关于spider-man")
+    root.geometry('500x300')
+    text=tk.Text(root,height=10,font=('Calibri',15),bg='yellow')
+    text.pack()
+    text.insert('insert',"\n\n\n\n\n  关注我的博客 https://blog.csdn.net/qq_42529429\n\n    QQ1220785153")
+    fanhui=tk.Button(root,text="返回",command=fanhui,bg='green',height=3,width=5,font=('Calibri',15))
+    fanhui.pack()
+    root.mainloop()
+windows=tk.Tk()
+windows.title("spider.man识别系统")
+windows.geometry('600x600')
+image = Image.open("sss.jpg")
+photo = ImageTk.PhotoImage(image)
+theLabel = tk.Label(windows,
+                    text="欢迎使用识别系统\n\n",
+                    justify=tk.LEFT,
+                    image=photo,
+                    compound = tk.CENTER,
+                    font=("华文行楷",50),
+                    fg = "white")
+
+menubar =tk.Menu(windows)
+filemenu = tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label='菜单', menu=filemenu)
+filemenu.add_command(label='关于我', command=aboutme)
+filemenu.add_command(label='我的照片', command=aboutmm)
+theLabel.pack()
+h1=tk.Button(windows,text="人脸识别系统",font=('Calibri',25),fg='blue',width=20,height=1,command=renlian)
+h1.pack()
+h2=tk.Button(windows,text="图文转换系统",font=('Calibri',25),fg='red',width=20,height=1,command=wenzi)
+h2.pack()
+windows.config(menu=menubar)
+windows.mainloop()
